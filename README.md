@@ -4,3 +4,4 @@
 3. execute basic functionality (R-type)
 4. save to registers
 5. load values from memory
+6. Work on rest of features
