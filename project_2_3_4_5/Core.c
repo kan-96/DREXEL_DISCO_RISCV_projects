@@ -1,3 +1,5 @@
+// Brian (bc866)
+
 #include "Core.h"
 
 Core *initCore(Instruction_Memory *i_mem)
@@ -23,9 +25,9 @@ bool tickFunc(Core *core)
     // Steps may include
     // (Step 1) Reading instruction from instruction memory
     unsigned instruction = core->instr_mem->instructions[core->PC / 4].instruction;
-    
+
     // (Step 2) ...
-    
+
     // (Step N) Increment PC. FIXME, is it correct to always increment PC by 4?!
     core->PC += 4;
 
@@ -70,7 +72,6 @@ Signal ALUControlUnit(Signal ALUOp,
 // FIXME (3). Imme. Generator
 Signal ImmeGen(Signal input)
 {
-
 }
 
 // FIXME (4). ALU
@@ -84,7 +85,14 @@ void ALU(Signal input_0,
     if (ALU_ctrl_signal == 2)
     {
         *ALU_result = (input_0 + input_1);
-        if (*ALU_result == 0) { *zero = 1; } else { *zero = 0; }
+        if (*ALU_result == 0)
+        {
+            *zero = 1;
+        }
+        else
+        {
+            *zero = 0;
+        }
     }
 }
 
@@ -93,7 +101,14 @@ Signal MUX(Signal sel,
            Signal input_0,
            Signal input_1)
 {
-    if (sel == 0) { return input_0; } else { return input_1; }
+    if (sel == 0)
+    {
+        return input_0;
+    }
+    else
+    {
+        return input_1;
+    }
 }
 
 // (5). Add
